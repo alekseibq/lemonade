@@ -10,6 +10,6 @@
 
 ## Next
 
-1. Add Playwright E2E when a browser runtime is available; resolve frontend audit findings deliberately.
+1. Resolve frontend audit findings deliberately.
 2. Add AI step-by-step replay in the UI.
 3. Add repeated training seeds and an experiment comparison report.

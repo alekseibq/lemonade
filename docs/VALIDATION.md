@@ -27,6 +27,7 @@ but CUDA was unavailable and PPO was explicitly configured with `device="cpu"`.
 The API test run emits one upstream Starlette `TestClient` deprecation warning;
 it does not affect the contract assertions and is tracked for dependency upgrade.
 
-Browser E2E was not run because no browser automation runtime is available in
-this environment. `npm audit` reports two transitive frontend vulnerabilities
-(one moderate, one high); no forced dependency upgrade was applied.
+Browser E2E passes with headless Chromium: the test creates a human-play
+session, submits ten actions, and verifies terminal history. `npm
+audit` reports four transitive frontend vulnerabilities (one moderate, three
+high); no forced dependency upgrade was applied.

@@ -48,3 +48,7 @@ changing its configuration; it does not switch ports while running.
 Vite explicitly permits the public hostname `lemonade.prismatix.news`; add any
 additional hostname to `server.allowedHosts` in `web/vite.config.ts` rather than
 disabling Vite's host protection.
+
+Run browser E2E from `web/` with `npm run test:e2e`. The Playwright config starts
+the API and Vite automatically unless already running locally. Initial setup may
+require `npx playwright install chromium` and the host browser libraries.
