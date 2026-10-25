@@ -24,6 +24,14 @@ seed 123 and evaluated on held-out seeds 10,000–10,199. It achieved mean profi
 SB3 2.9.0 checker and training smoke passed. The PyTorch build is CUDA-capable,
 but CUDA was unavailable and PPO was explicitly configured with `device="cpu"`.
 
+Three 10,000-timestep PPO runs (training seeds 101, 202 and 303) were evaluated
+on the identical held-out scenario seeds 10,000–10,199. Their mean profits were
+−353.79 ₽, 1,607.26 ₽ and 4,843.80 ₽ respectively; aggregate run-level mean was
+2,032.42 ₽, median 1,607.26 ₽ and stddev 2,143.10 ₽. All exceed the roughly
+−1,988 ₽ random baseline, while all remain below the 8,304.85 ₽ rule-based
+baseline. This establishes improvement over random, not stable superiority over
+the heuristic.
+
 The API test run emits one upstream Starlette `TestClient` deprecation warning;
 it does not affect the contract assertions and is tracked for dependency upgrade.
 
