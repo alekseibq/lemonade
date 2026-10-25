@@ -110,3 +110,42 @@ def train_and_evaluate(
     }
     (output_dir / "report.json").write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
     return report
+
+
+def train_multiple_seeds(
+    output_dir: Path,
+    training_seeds: list[int],
+    total_timesteps: int,
+    evaluation_seeds: list[int],
+    game: GameConfig | None = None,
+) -> dict[str, Any]:
+    """Repeat PPO training with common held-out scenarios and aggregate run-level results."""
+    if len(training_seeds) < 2:
+        raise ValueError("at least two training seeds are required")
+    game = game or GameConfig()
+    output_dir.mkdir(parents=True, exist_ok=True)
+    runs = [
+        train_and_evaluate(
+            output_dir / f"seed-{seed}",
+            training=TrainingConfig(seed=seed, total_timesteps=total_timesteps),
+            game=game,
+            evaluation_seeds=evaluation_seeds,
+        )
+        for seed in training_seeds
+    ]
+    trained_means = [run["evaluation"]["trained"]["mean_profit"] for run in runs]
+    aggregate = {
+        "training_runs": len(runs),
+        "training_seeds": training_seeds,
+        "evaluation_seeds": evaluation_seeds,
+        "rules_version": game.rules_version,
+        "trained_mean_profit_across_runs": mean(trained_means),
+        "trained_median_profit_across_runs": median(trained_means),
+        "trained_mean_profit_stddev_across_runs": pstdev(trained_means),
+        "per_run": [
+            {"seed": run["training"]["seed"], "evaluation": run["evaluation"]} for run in runs
+        ],
+    }
+    comparison_path = output_dir / "comparison.json"
+    comparison_path.write_text(json.dumps(aggregate, indent=2, sort_keys=True) + "\n")
+    return aggregate

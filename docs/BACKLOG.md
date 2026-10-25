@@ -7,6 +7,7 @@
 - [x] I2 (частично): Gym adapter and baseline policies.
 - [x] I3: bounded CPU PPO, saved model, reproducibility metadata and held-out evaluation.
 - [x] I4 (minimal): local FastAPI session API and Vue human-play UI.
+- [x] Repeated PPO seed comparison on common held-out scenarios.
 
 ## Next
 

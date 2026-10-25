@@ -11,3 +11,8 @@ evaluation improves over random baseline.
 Its evaluation scenarios start at seed 10,000 and are disjoint from the training
 seed. The report is evidence of a particular run; it does not establish success
 until its held-out trained mean profit exceeds the random baseline.
+
+Use `scripts/compare_ppo_seeds.py --output artifacts/ppo-comparison` for repeated
+training. It trains seeds 101, 202 and 303 by default and evaluates every run on
+the same held-out seeds 20,000–20,199, writing per-run artifacts and one
+`comparison.json` aggregate report.
