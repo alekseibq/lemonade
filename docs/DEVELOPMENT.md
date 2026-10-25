@@ -52,3 +52,8 @@ disabling Vite's host protection.
 Run browser E2E from `web/` with `npm run test:e2e`. The Playwright config starts
 the API and Vite automatically unless already running locally. Initial setup may
 require `npx playwright install chromium` and the host browser libraries.
+
+For AI replay, train or copy a PPO artifact to `artifacts/<model-id>/model.zip`.
+In the UI enter that `<model-id>` and a scenario seed, then use **Start** and
+**Next step**. Each replay response shows only its current observation, selected
+action and resulting day outcome.
