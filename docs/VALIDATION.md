@@ -12,7 +12,12 @@ Executed on 2026-10-25 in the local Python 3.12 virtual environment.
 
 The benchmark used the pure core and fixed action `(price=20, production=100)`;
 it measures simulation throughput, not PPO speed. The requested 10,000 eps/s
-target is met on this host. SB3 compatibility and PPO smoke are **not run**:
-the supplied Python 3.12 package resolver selected a multi-gigabyte CUDA PyTorch
-distribution and did not complete installation. This is an environment/dependency
-limitation, not evidence of compatibility.
+target is met on this host.
+
+PPO experiment `lemonade-ppo-10000` was trained for 10,000 CPU timesteps with
+seed 123 and evaluated on held-out seeds 10,000–10,199. It achieved mean profit
+3,259.60 ₽ (median 3,268 ₽; stddev 850.88; 100% profitable) versus random
+−1,976.48 ₽ (median −1,998 ₽; stddev 166.97; 0% profitable): an improvement of
+5,236.08 ₽ in mean profit. Rule-based remains stronger at 8,304.85 ₽ mean.
+SB3 2.9.0 checker and training smoke passed. The PyTorch build is CUDA-capable,
+but CUDA was unavailable and PPO was explicitly configured with `device="cpu"`.
