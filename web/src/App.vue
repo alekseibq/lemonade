@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 
 type State = { day: number; days_remaining?: number; capital: number; weather_forecast?: string; terminated: boolean }
 type Result = { day: number; weather: string; price: number; produced: number; demand: number; sold: number; revenue: number; production_cost: number; profit: number; capital_after: number }
-const api = 'http://localhost:8000'
+const api = '/api'
 const sessionId = ref<string>()
 const state = ref<State>()
 const history = ref<Result[]>([])
