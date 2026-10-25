@@ -20,3 +20,6 @@ Re-evaluate a saved policy with
 Install the HTTP optional dependency with `pip install -e '.[dev,api]'`, then
 run `uvicorn lemonade.api:app --reload`. The API is local and holds sessions in
 memory; restarting the process drops them.
+
+In another terminal, run `cd web && npm install && npm run dev`. The Vue UI uses
+the local API at `http://localhost:8000`; start the API first.

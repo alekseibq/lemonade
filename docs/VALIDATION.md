@@ -8,6 +8,7 @@ Executed on 2026-10-25 in the local Python 3.12 virtual environment.
 | `pytest` | 9 passed (property invariants and Gym checker included) |
 | `coverage report --include='lemonade/core.py'` | 90% lines |
 | API contract tests | passed (2 tests, including terminal and validation responses) |
+| `web: npm run build` | passed (Vue type-check and Vite production build) |
 | `python scripts/benchmark.py --episodes 100000` | 18,320 episodes/s |
 | held-out baseline seeds 1000–1199 | random mean profit −1,952.35 ₽; rule mean 8,408.25 ₽ |
 
@@ -25,3 +26,7 @@ but CUDA was unavailable and PPO was explicitly configured with `device="cpu"`.
 
 The API test run emits one upstream Starlette `TestClient` deprecation warning;
 it does not affect the contract assertions and is tracked for dependency upgrade.
+
+Browser E2E was not run because no browser automation runtime is available in
+this environment. `npm audit` reports two transitive frontend vulnerabilities
+(one moderate, one high); no forced dependency upgrade was applied.

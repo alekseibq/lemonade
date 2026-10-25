@@ -7,3 +7,5 @@ coverage.xml
 .coverage
 htmlcov/
 artifacts/
+web/node_modules/
+web/dist/

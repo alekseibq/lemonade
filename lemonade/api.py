@@ -6,6 +6,7 @@ from dataclasses import asdict
 from uuid import uuid4
 
 from fastapi import FastAPI, HTTPException, status
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 from lemonade.core import DayResult, LemonadeGame
@@ -24,6 +25,12 @@ class GameSession:
 
 sessions: dict[str, GameSession] = {}
 app = FastAPI(title="Lemonade RL Lab API", version="0.1.0")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
+)
 
 
 def _result_payload(result: DayResult) -> dict[str, object]:
