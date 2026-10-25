@@ -7,6 +7,7 @@ export default defineConfig({
     host: '127.0.0.1',
     port: 5605,
     strictPort: true,
+    allowedHosts: ['lemonade.prismatix.news'],
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:8000',

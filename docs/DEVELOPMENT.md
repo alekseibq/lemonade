@@ -44,3 +44,7 @@ location / {
 Place this in a dedicated server block or virtual host, then reload nginx after
 validating its full configuration with `nginx -t`. Restart the Vite process after
 changing its configuration; it does not switch ports while running.
+
+Vite explicitly permits the public hostname `lemonade.prismatix.news`; add any
+additional hostname to `server.allowedHosts` in `web/vite.config.ts` rather than
+disabling Vite's host protection.
