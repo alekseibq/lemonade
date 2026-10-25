@@ -6,6 +6,10 @@
 CLI запускает headless эпизод. Будущие FastAPI и Vue будут вызывать core через
 application layer; обучение останется in-process через Gym, не через HTTP.
 
+`lemonade.api` is the current local application boundary: ephemeral in-memory
+sessions expose only `public_state`, day result and history. It is intentionally
+not a persistence or multi-user service.
+
 Observation: день, капитал, текущий точный прогноз погоды. Скрыты будущие дни,
 шум и спрос. Action: дискретные цена и план выпуска. Reward: дневная прибыль.
 Окончание 10-го дня — `terminated=True`; `truncated` не используется средой.

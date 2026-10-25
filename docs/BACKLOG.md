@@ -9,6 +9,6 @@
 
 ## Next
 
-1. Add FastAPI and Vue human-play vertical slice.
-2. Add API contract and browser E2E checks with that vertical slice.
-3. Add repeated training seeds and an experiment comparison report.
+1. Add Vue human-play UI and browser E2E checks.
+2. Add repeated training seeds and an experiment comparison report.
+3. Add persistence only if local experiment/history use requires it.

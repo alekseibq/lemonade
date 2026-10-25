@@ -16,3 +16,7 @@ The output contains `model.zip` and `report.json`; the latter captures rules,
 configuration, package versions, held-out seeds and comparisons with baselines.
 Re-evaluate a saved policy with
 `python scripts/evaluate_model.py artifacts/ppo-smoke/model.zip`.
+
+Install the HTTP optional dependency with `pip install -e '.[dev,api]'`, then
+run `uvicorn lemonade.api:app --reload`. The API is local and holds sessions in
+memory; restarting the process drops them.
